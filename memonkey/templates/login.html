@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST" action="" class="form-signin">
+    {{ form.hidden_tag() if form.hidden_tag }}
+    <h2 class="form-signin-heading">Please sign in</h2>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-error">
+            <a class="close" data-dismiss="alert" href="#">x</a><p>{{ message }}</p>
+        </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <input id="name" name="name" type="text" class="input-block-level" placeholder="User name" required value="{{ form.name.data if form.name.data }}">
+    <input id="password" name="password" type="password" class="input-block-level" placeholder="Password" required>
+    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+</form>
+{% endblock %}

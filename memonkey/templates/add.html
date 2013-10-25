@@ -1,0 +1,77 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% set active_page = "add" %}
+{% block content %}
+<article class="post">
+<form class="form-horizontal" method="POST" action="">
+    <fieldset>
+        <legend>{% if edit_post %}Edit post{% else %}Add new post{% endif %}</legend>
+            {{ form.hidden_tag() if form.hidden_tag }}
+            
+            <div class="control-group">
+              <label class="control-label" for="tags">Tags</label>
+              <div class="controls">
+                <input id="tags" name="tags" type="text" placeholder="tags for post" class="input-xlarge" value="{{ form.tags.data if form.tags.data }}">
+                {% if form.tags.errors %}
+                    {% for e in form.tags.errors %}
+                        <div class="alert alert-error">
+                          <a class="close" data-dismiss="alert" href="#">x</a><p>{{ e }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <p class="help-block">You can put multiple tags divided by comma(,)</p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="title">Post title</label>
+              <div class="controls">
+                <input id="title" name="title" type="text" placeholder="title" class="input-xlarge" required="" value="{{ form.title.data if form.title.data }}">
+                {% if form.title.errors %}
+                    {% for e in form.title.errors %}
+                        <div class="alert alert-error">
+                          <a class="close" data-dismiss="alert" href="#">x</a><p>{{ e }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="body">Post body</label>
+              <div class="controls">                     
+                <textarea id="body" name="body" required="">{{ form.body.data if form.body.data }}</textarea>
+                {% if form.body.errors %}
+                    {% for e in form.body.errors %}
+                        <div class="alert alert-error">
+                          <a class="close" data-dismiss="alert" href="#">x</a><p>{{ e }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            <button class="btn btn-primary pull-right" type="submit">Save</button>
+            {% if edit_post %}
+            <a type="button" class="btn btn-primary pull-left" href="#delete_confirmation" data-toggle="modal">Delete</a>
+            {% endif %}
+            
+        </fieldset>
+        </form>
+{% if edit_post %}
+<div id="delete_confirmation" class="modal fade">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3>Confirmation dialog</h3>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure want to delete that post?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <a href="{{ url_for('delete_post', post_id=post_id) }}" class="btn btn-primary">Delete</a>
+  </div>
+</div>
+{% endif %}
+</article>
+
+{% endblock %}

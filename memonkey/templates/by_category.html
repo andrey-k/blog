@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="all-posts">
+    <h1>All posts for tag "{{ tag }}":</h1>
+    {% if posts.items %}
+    {% for post in posts.items %}
+        {% include 'post.html' %}
+    {% endfor %}
+
+    {% if posts.has_prev or posts.has_next %}
+    <div class="posts-navigation">
+        {% if posts.has_prev %}<a class="btn posts-nav pull-left" href="{{ url_for('by_category', tag=tag, page = posts.prev_num) }}"> Newer posts</a>{% else %}<div class="btn posts-nav pull-left disabled">Newer posts</div>{% endif %} 
+        {% if posts.has_next %}<a class="btn posts-nav pull-right" href="{{ url_for('by_category', tag=tag, page = posts.next_num) }}">Older posts</a>{% else %}<div class="btn posts-nav pull-right disabled">Older posts</div>{% endif %}
+    </div>
+    {% endif %}
+    {% else %}
+    <p>Sorry, but there are no posts with that tag</p>
+    {% endif %}
+</article>
+{% endblock %}

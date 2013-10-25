@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active_page = "edit_tags" %}
+{% block extra_js %}
+<script src="/static/js/blog.js"></script>
+{% endblock %}
+{% block content %}
+<article class="post edit_tags">
+    <h1>There is list of all tags from that blog.</h1>
+    <h2>Click any to find posts related to that tag</h2>
+    <div class="alert alert-success">
+        <a class="close" data-dismiss="alert" href="#">x</a><p class="success-text"></p>
+    </div>
+    <div class="alert alert-error">
+        <a class="close" data-dismiss="alert" href="#">x</a><p class="error-text"></p>
+    </div>
+    <section class="tags">
+    {% if tags %}
+    {% for tag in tags %}
+        <a id="{{ tag.id }}" href="#" class="badge btn-info btn-small">{{ tag.name }}</a>
+    {% endfor %}
+    {% else %}
+        There are no tags at all =(
+    {% endif %}
+    <div class="control-group">
+        <div class="controls">
+            <input id="tags" name="tags" type="text" placeholder="tag" class="input-xlarge" data-tag="">
+        </div>
+            <a id="save_tag" type="button" class="btn btn-primary pull-right disabled" href="#" data-toggle="modal">Save</a>
+            <a id="delete_tag" type="button" class="btn btn-primary pull-left disabled" href="#delete_confirmation" data-toggle="modal">Delete</a>
+        </div>
+    </section>
+</article>
+<div id="delete_confirmation" class="modal fade">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3>Confirmation dialog</h3>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure want to delete that tag?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a id="delete_tag" href="#" class="btn btn-primary">Delete</a>
+    </div>
+</div>
+{% endblock %}

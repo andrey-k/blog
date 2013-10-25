@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="all-posts">
+    <h1>Search posts for "{{query}}":</h1>
+
+{% for post in posts %}
+    {% include 'post.html' %}
+{% endfor %}
+</article>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% set active_page = "all_tags" %}
+{% block content %}
+<article class="post">
+    <h1>There is list of all tags from that blog.</h1>
+    <h2>Click any to find posts related to that tag</h2>
+    <section class="tags">
+    {% if tags %}
+        {% for tag in tags %}
+            <a id={{ tag.id }} href="{{ url_for('by_category', tag=tag.name) }}" class="badge btn-info btn-small">{{ tag.name }}</a>
+        {% endfor %}
+    {% else %}
+        There are no tags at all =(
+    {% endif %}
+    </section>
+</article>
+{% endblock %}

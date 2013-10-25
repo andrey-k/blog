@@ -1,0 +1,23 @@
+<section class="story">
+{% if g.user.is_authenticated() %}
+    <a href="{{ url_for('edit', post_id=post.id) }}" class="edit story-link"><i class="edit icon-edit icon-2x"></i></a>
+{% endif %}
+    <h1>{{post.title}}</h1>
+    <div class="posted">
+        <p><strong>Posted: </strong>{{ post.pub_date.strftime('%a, %d-%m-%Y %H:%M') }}</p>
+    </div>
+    <div class="story-text">
+        <p>{{post.body}}</p>
+    </div>
+    <div class="story-tags">
+        <p><strong>Tags: </strong>
+        {% if post.categories %}
+        {% for tag in post.categories %}
+            <a href="{{ url_for('by_category', tag=tag.name) }}" class="badge btn-info btn-small">{{ tag.name }}</a>
+        {% endfor %}
+        {% else %}
+            no tags defined for that post
+        {% endif %}
+        <p>
+    </div>
+</section>

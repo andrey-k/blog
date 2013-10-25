@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% set active_page = "index" %}
+
+{% block content %}
+
+{% if not posts.has_prev %}
+ <div class="hero-unit">
+    <p>Welcome to my first blog writen for myself. Personally I don't writing some stories. I prefer to talk with people. I would like to see immediate reaction on what I say. Participate in discussion in real time. That is why I don't like blogs and here you will see articles from Wikipedia =)</p>
+</div>
+{% endif %}
+
+<article class="all-posts">
+    {% for post in posts.items %}
+        {% include 'post.html' %}
+    {% endfor %}
+    
+    {% include 'navigation.html' %}
+</article>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<article class="post">
+    <h1>An unexpected error has occurred</h1>
+    <p>Sorry for the inconvenience!</p>
+    <a class="btn btn-primary btn-small" href="{{url_for('index')}}">Back</a>
+</article>
+{% endblock %}

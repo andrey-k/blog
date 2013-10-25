@@ -1,0 +1,6 @@
+{% if posts.has_prev or posts.has_next %}
+<div class="posts-navigation">
+    {% if posts.has_prev %}<a class="btn posts-nav pull-left" href="{{ url_for('index', page = posts.prev_num) }}"> Newer posts</a>{% else %}<div class="btn posts-nav pull-left disabled">Newer posts</div>{% endif %} 
+    {% if posts.has_next %}<a class="btn posts-nav pull-right" href="{{ url_for('index', page = posts.next_num) }}">Older posts</a>{% else %}<div class="btn posts-nav pull-right disabled">Older posts</div>{% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,16 @@
+Simple blog using
+- Flask
+- Flask­Login
+- Flask­SQLAlchemy
+- WTForms
+- SQLAlchemy
+- Database: PostgreSQL
+- Bootstrap 2.0
+- less
+
+Before initialisation of db it is necessary to create a table for users and then change owner
+
+CREATE TABLE users (id SERIAL NOT NULL, name VARCHAR(100) NOT NULL, password BYTEA NOT NULL, PRIMARY KEY (id));
+alter table users owner to monkey;
+
+We use whooshalchemy for full text search. It has some problems with sessions. To fix this is necessary to replace a file flask_whooshalchemy.py with the given one.

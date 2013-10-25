@@ -1,0 +1,199 @@
+@import "lesshat";
+
+@grey: grey;
+@link-color: #555555;
+@link-color-hover: #555555;
+@darker-grey: #f0f0f0;
+@black: #000000;
+
+@the-border: 1px;
+@base-color: #111;
+
+@light-grey: #fafafa;
+
+body {
+  	background: @light-grey;
+  	padding-top: 60px;
+	padding-bottom: 40px;
+
+}
+
+.navbar-link {
+	margin-left: 10px;
+}
+
+.hero-unit {
+	padding: 30px;
+}
+
+.all-posts section.story {
+	margin-top: 15px;
+	padding: 15px;
+	.border-radius(10px);
+	.transition(~"box-shadow .5s ease-in-out");
+	&:hover {
+		background: @darker-grey;
+		.box-shadow(~"0 1px 10px #000");
+		.transition(~"box-shadow .5s ease-in-out");
+		.edit {
+			display: block;
+		}
+	};
+	.edit {
+		display: none;
+	};
+}
+
+.edit {
+	position: relative;
+	float: right;
+	top: 5px;
+	cursor: pointer;
+}
+
+.story .btn-primary {
+	margin-top: 5px;
+}
+.posted {
+	border-top: 1px solid @grey;
+	border-bottom: 1px solid @grey;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.story-tags {
+	margin-top: 15px;
+}
+
+.story-link {
+	color: @link-color;
+	&:hover {
+		color: @black;
+		text-decoration: none;
+	};
+}
+.posts-navigation {
+	overflow: hidden;
+	position: relative;
+	background: @darker-grey;
+	padding: 10px;
+	margin-top: 25px;
+	.border-radius(10px);
+	.box-shadow(~"0 1px 10px #000");
+}
+.posts-nav {
+	color: @link-color;
+	margin-bottom: 0;
+	&:hover {
+		color: @link-color-hover;
+	}
+}
+
+.alert p {
+    margin: 0;
+}
+
+.edit_tags div.alert-success,
+.edit_tags div.alert-error {
+	display: none;
+}
+
+.modal.fade {
+	top: -55%;
+}
+.tags .badge {
+	margin: 5px;
+	padding: 5px 10px;
+}
+
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    .border-radius(5px);
+    .box-shadow(~"0 1px 2px rgba(0,0,0,.05)");
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+font-size: 16px;
+height: auto;
+margin-bottom: 15px;
+padding: 7px 9px;
+}
+
+.alert p {
+margin: 0;
+}
+
+textarea#body {
+	width: 97%;
+	height: 200px;
+}
+
+.control-group {
+	margin-top: 20px;
+}
+
+@media screen and (min-width: 480px) {
+	.form-horizontal .control-label {
+		width: 80px;
+	}
+
+	.form-horizontal .controls {
+		margin-left: 100px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.hero-unit {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 767px) {
+	article {
+		width: 720px;
+		margin: auto;
+	}
+
+	div.alert-info {
+		width: 670px;
+		margin: 20px auto;
+	}
+
+	.tags .control-group {
+		width: 285px;
+	}
+}
+@media screen and (max-width: 979px) {
+	body {
+		padding-top: 0;
+	}
+    .navbar {
+    	.navbar-search {
+	    	width: 100%;
+	    	input {
+	    		width: 94%;
+	    		padding: 4px 3%;
+	    		margin-bottom: 3px;
+	    	}
+	    }
+	    .navbar-link {
+	    	margin-right: 5px;
+	    }
+    }
+
+}
